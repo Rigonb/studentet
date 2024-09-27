@@ -24,7 +24,7 @@ public class DBConnection {
         }
         return connation;
     }
-
+        System.out.println("O rigon oo");
 
     public Connection getConnation(){
         return this.connect();
