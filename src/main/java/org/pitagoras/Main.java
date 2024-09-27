@@ -25,9 +25,9 @@ public class Main {
 
         while (true) {
             System.out.println("Pres 1 if u want to see the list of the students");
-            System.out.println("Pres 2 if u want to update a Student");
+            System.out.println("Pres 2 if u want to update a Student.ª");
             System.out.println("Pres 3 if u want to delete a Student");
-            System.out.println("Pres x if u want to exit this page");
+            System.out.println("Pres x if u want to exit this page.");
             String input = scanner.nextLine();
             if (input.equals("x")) {
                 break;

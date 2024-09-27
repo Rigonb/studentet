@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="be4964c6-e4d5-4164-9b7e-ee97d9c122f5" name="Changes" comment="new -" />
+    <list default="true" id="be4964c6-e4d5-4164-9b7e-ee97d9c122f5" name="Changes" comment="new -">
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/pitagoras/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pitagoras/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +22,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Rigonb"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Rigonb/studentet.git",
+    "accountId": "82c99ddd-805d-4a27-9814-08d8e4b6d058"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -78,7 +92,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727454061301</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="new -">
+      <option name="closed" value="true" />
+      <created>1727455975928</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1727455975928</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
