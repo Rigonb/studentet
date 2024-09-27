@@ -33,7 +33,7 @@ public class StudentRepository {
 
 
         } catch (SQLException e) {
-            System.out.println("Nuk mujta me shtu studentin");
+            System.out.println("Nuk mujta me shtu studentinnnnn");
             e.printStackTrace();
 
         }
