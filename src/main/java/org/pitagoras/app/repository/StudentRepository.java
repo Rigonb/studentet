@@ -21,7 +21,7 @@ public class StudentRepository {
     }
 
     public void createStudent(Student student) {
-        String querry = "insert into Studentet(name,age)values(?,?)";
+        String querry = "insert into Studentet(name,age,last_name,phone,birthplace,gender,course_name)values(?,?,?,?,?,?,?)";
 
         try (Connection lidhja = this.dbConnection.getConnation();
              PreparedStatement urdher = lidhja.prepareStatement(querry)
@@ -29,6 +29,12 @@ public class StudentRepository {
 
             urdher.setString(1, student.getName());
             urdher.setInt(2, student.getAge());
+            urdher.setString(3,student.getLastname());
+            urdher.setString(4,student.getPhone());
+            urdher.setString(5,student.getBirthplace());
+            urdher.setString(6, String.valueOf(student.getGender()));
+            urdher.setString(7,student.getCourseName());
+
             urdher.executeUpdate();
 
 
@@ -50,9 +56,8 @@ public class StudentRepository {
             urdher.setLong(1, id);
             ResultSet respons = urdher.executeQuery();
             if (respons.next()) {
-                return new Student(respons.getLong("id"), respons.getString("name"), respons.getInt("age"));
+                return new Student(respons.getLong("id"), respons.getString("name"), respons.getInt("age"),respons.getString("last_name"),respons.getString("phone"),respons.getString("birthplace"),respons.getString("gender").charAt(0),respons.getString("courseName"));
             }
-
 
         } catch (SQLException e) {
             System.out.println("Nuk mujta me shtu studentin");
@@ -71,10 +76,20 @@ public class StudentRepository {
              ResultSet respons = urdher.executeQuery()) {
 
             while (respons.next()) {
+                String genderStr = respons.getString("gender");
+                char gender = 0;
+                if(genderStr != null){
+                    gender = genderStr.charAt(0);
+                }
                 Student student = new Student(
                         respons.getLong("id"),
                         respons.getString("name"),
-                        respons.getInt("age")
+                        respons.getInt("age"),
+                        respons.getString("last_name"),
+                        respons.getString("phone"),
+                        respons.getString("birthplace"),
+                        gender,
+                        respons.getString("course_name")
                 );
                 studentList.add(student);
             }

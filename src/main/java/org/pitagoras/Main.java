@@ -22,7 +22,8 @@ public class Main {
 
         StudentRepository srepo = new StudentRepository(dbc);
         System.out.println(srepo.kthejTeGjitheStudentet());
-
+       // Student newStudent = new Student(0L,"Rigon",18,"Bashota","34567","Podujev",'M',"Pitagoras");
+        //srepo.createStudent(newStudent); D.SH update
         while (true) {
             System.out.println("Pres 1 if u want to see the list of the students. ");
             System.out.println("Pres 2 if u want to update a Student. ª");
@@ -39,7 +40,6 @@ public class Main {
                 });
 
 
-            } else if (input.equals("2")) {
                 System.out.println("Wich student should i update please tell me his id");
                 String id = scanner.nextLine();
                 Student studenti = srepo.ktheStudentin(Long.valueOf(id));
