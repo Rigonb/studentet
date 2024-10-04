@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be4964c6-e4d5-4164-9b7e-ee97d9c122f5" name="Changes" comment="deleted some code">
-      <change afterPath="$PROJECT_DIR$/src/migrations/V1_add_students_table.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/migrations/V2_add_fields_to_student_tabels.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/pitagoras/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pitagoras/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pitagoras/app/db/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pitagoras/app/db/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pitagoras/app/db/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pitagoras/app/db/entity/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/pitagoras/app/repository/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pitagoras/app/repository/StudentRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +52,7 @@
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "full.screen.before.presentation.mode": "false",
+    "full.screen.before.presentation.mode": "true",
     "git-widget-placeholder": "rigon/08/30/2024",
     "kotlin-language-version-configured": "true",
     "onboarding.tips.debug.path": "/Users/rigonbashota/IdeaProjects/studentet/src/main/java/org/example/Main.java",

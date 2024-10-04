@@ -48,7 +48,7 @@ public class Main {
 
                 } else {
                     System.out.println(studenti);
-                    System.out.println("Please type the new name and age");
+                    System.out.println("Please type the following fields");
                     System.out.println("If u dont want to change please leave if blank");
                     System.out.print("Name: ");
                     String emriIRi = scanner.nextLine();
@@ -57,8 +57,21 @@ public class Main {
                     String moshaInput = scanner.nextLine();
                     if (!moshaInput.isEmpty()) {
                         moshaERe = Integer.valueOf(moshaInput);
-
                     }
+                    System.out.println("LastName: ");
+                    String newLastName = scanner.nextLine();
+                    System.out.println("Phone: ");
+                    String newPhone = scanner.nextLine();
+                    System.out.println("Birthplace: ");
+                    String newBirthPlace = scanner.nextLine();
+                    System.out.println("Gender: ");
+                    String newGender = scanner.nextLine();
+                    System.out.println("CourseName: ");
+                    String newCourseName = scanner.nextLine();
+
+
+
+
 
 
                     Student updatedStudent = new Student();
@@ -72,8 +85,35 @@ public class Main {
                     } else {
                         updatedStudent.setAge(moshaERe);
                     }
+                    if(newLastName.isEmpty()){
+                        updatedStudent.setLastname(studenti.getLastname());
+                    }else{
+                        updatedStudent.setLastname(newLastName);
+                    }
+                    if(newPhone.isEmpty()){
+                        updatedStudent.setPhone(studenti.getPhone());
+                    }else{
+                        updatedStudent.setPhone(newPhone);
+                    }
+                    if(newBirthPlace.isEmpty()){
+                        updatedStudent.setBirthplace(studenti.getBirthplace());
+                    }else{
+                        updatedStudent.setBirthplace(newBirthPlace);
+                    }
+                    if(newGender.isEmpty()){
+                        updatedStudent.setGender(studenti.getGender());
+                    }else{
+                        updatedStudent.setGender(newGender.charAt(0));
+                    }
+                    if(newCourseName.isEmpty()){
+                        updatedStudent.setCourse_name(studenti.getCourseName());
+                    }else{
+                        updatedStudent.setCourse_name(newCourseName);
+                    }
+
                     srepo.updateStudent(studenti.getId(), updatedStudent);
                 }
+
 
             } else if (input.equals("3")) {
                 System.out.println("Wich id should i delete");
@@ -84,6 +124,7 @@ public class Main {
                 } else {
                     srepo.deleteStudentByID(Long.valueOf(id));
                 }
+
 
 
             }
