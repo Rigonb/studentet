@@ -56,7 +56,13 @@ public class StudentRepository {
             urdher.setLong(1, id);
             ResultSet respons = urdher.executeQuery();
             if (respons.next()) {
-                return new Student(respons.getLong("id"), respons.getString("name"), respons.getInt("age"),respons.getString("last_name"),respons.getString("phone"),respons.getString("birthplace"),respons.getString("gender").charAt(0),respons.getString("course_name"));
+                String genderRespStr = respons.getString("gender");
+                Character genderResponse = null;
+                if(genderRespStr != null) {
+                    genderResponse = genderRespStr.charAt(0);
+                }
+//                Character genderResponse = respons.getString("gender");
+                return new Student(respons.getLong("id"), respons.getString("name"), respons.getInt("age"),respons.getString("last_name"),respons.getString("phone"),respons.getString("birthplace"), genderResponse,respons.getString("course_name"));
             }
 
         } catch (SQLException e) {
@@ -102,6 +108,7 @@ public class StudentRepository {
     }
 
     public void updateStudent(Long id, Student student) {
+        System.out.println(student + " :" + student.getGender());
         String querry = "update Studentet set name = ?,age = ?,last_name = ?,phone = ?,birthplace = ?,gender = ?,course_name = ? where id = ?";
 
         try (Connection lidhja = this.dbConnection.getConnation();
@@ -109,6 +116,7 @@ public class StudentRepository {
         ) {
 //          char gender = 0;
           String genderStr = student.getGender() + "";
+
 //          if (!genderStr.isEmpty()){
 //              gender = genderStr.charAt(0);
 //          }

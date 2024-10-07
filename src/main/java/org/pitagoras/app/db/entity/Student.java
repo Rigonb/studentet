@@ -8,7 +8,7 @@ public class Student {
     private String lastname;
     private String phone;
     private String birthplace;
-    private char  gender;
+    private Character  gender;
     private String courseName;
 
 
@@ -27,7 +27,7 @@ public Student(long id,String name,int age){
 
     }
 
-    public Student(long id, String name, int age, String lastname, String phone, String birthplace, char gender, String courseName) {
+    public Student(long id, String name, int age, String lastname, String phone, String birthplace, Character gender, String courseName) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -62,11 +62,11 @@ public Student(long id,String name,int age){
         this.birthplace = birthplace;
     }
 
-    public char getGender() {
+    public Character getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(Character gender) {
         this.gender = gender;
     }
 
