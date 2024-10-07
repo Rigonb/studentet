@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be4964c6-e4d5-4164-9b7e-ee97d9c122f5" name="Changes" comment="deleted some code">
+      <change afterPath="$PROJECT_DIR$/src/migrations/V3_add_payments_table.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pitagoras/app/db/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pitagoras/app/db/entity/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/pitagoras/app/repository/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pitagoras/app/repository/StudentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/pitagoras/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/pitagoras/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,16 +140,5 @@
     <MESSAGE value="new -" />
     <MESSAGE value="deleted some code" />
     <option name="LAST_COMMIT_MESSAGE" value="deleted some code" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/pitagoras/app/db/DBConnection.java</url>
-          <line>29</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
