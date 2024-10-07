@@ -17,7 +17,8 @@ import java.util.Scanner;
 // to do create table if not exist
 //create pagesa java class at entity
 // add a new field at student class pagesat wich is a list of pagesat
-// when a student is created it should be created also for each month a payment until 30 qeshor
+// when a student is created it should be createdd also for each month a payment until 30 qeshor
+
 
 public class Main {
     public static void main(String[] args) {
