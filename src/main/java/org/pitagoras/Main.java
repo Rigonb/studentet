@@ -8,11 +8,6 @@ import java.sql.SQLOutput;
 import java.util.List;
 import java.util.Scanner;
 
-
-
-
-
-
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -22,7 +17,7 @@ public class Main {
 
         StudentRepository srepo = new StudentRepository(dbc);
         System.out.println(srepo.kthejTeGjitheStudentet());
-       // Student newStudent = new Student(0L,"Rigon",18,"Bashota","34567","Podujev",'M',"Pitagoras");
+        // Student newStudent = new Student(0L,"Rigon",18,"Bashota","34567","Podujev",'M',"Pitagoras");
         //srepo.createStudent(newStudent); D.SH update
         while (true) {
             System.out.println("Pres 1 if u want to see the list of the students. ");
@@ -70,10 +65,6 @@ public class Main {
                     String newCourseName = scanner.nextLine();
 
 
-
-
-
-
                     Student updatedStudent = new Student();
                     if (emriIRi.isEmpty()) {
                         updatedStudent.setName(studenti.getName());
@@ -85,29 +76,29 @@ public class Main {
                     } else {
                         updatedStudent.setAge(moshaERe);
                     }
-                    if(newLastName.isEmpty()){
+                    if (newLastName.isEmpty()) {
                         updatedStudent.setLastname(studenti.getLastname());
-                    }else{
+                    } else {
                         updatedStudent.setLastname(newLastName);
                     }
-                    if(newPhone.isEmpty()){
+                    if (newPhone.isEmpty()) {
                         updatedStudent.setPhone(studenti.getPhone());
-                    }else{
+                    } else {
                         updatedStudent.setPhone(newPhone);
                     }
-                    if(newBirthPlace.isEmpty()){
+                    if (newBirthPlace.isEmpty()) {
                         updatedStudent.setBirthplace(studenti.getBirthplace());
-                    }else{
+                    } else {
                         updatedStudent.setBirthplace(newBirthPlace);
                     }
-                    if(newGender.isEmpty()){
+                    if (newGender.isEmpty()) {
                         updatedStudent.setGender(studenti.getGender());
-                    }else{
+                    } else {
                         updatedStudent.setGender(newGender.charAt(0));
                     }
-                    if(newCourseName.isEmpty()){
+                    if (newCourseName.isEmpty()) {
                         updatedStudent.setCourse_name(studenti.getCourseName());
-                    }else{
+                    } else {
                         updatedStudent.setCourse_name(newCourseName);
                     }
 
@@ -124,7 +115,6 @@ public class Main {
                 } else {
                     srepo.deleteStudentByID(Long.valueOf(id));
                 }
-
 
 
             }
