@@ -1,7 +1,9 @@
 package org.pitagoras;
 
 import org.pitagoras.app.db.DBConnection;
+import org.pitagoras.app.db.entity.Pagesa;
 import org.pitagoras.app.db.entity.Student;
+import org.pitagoras.app.repository.PaymentRepository;
 import org.pitagoras.app.repository.StudentRepository;
 
 import java.sql.SQLOutput;
@@ -26,12 +28,14 @@ public class Main {
         DBConnection dbc = new DBConnection();
 
         StudentRepository srepo = new StudentRepository(dbc);
+        PaymentRepository prepo = new PaymentRepository(dbc);
         System.out.println(srepo.kthejTeGjitheStudentet());
         // Student newStudent = new Student(0L,"Rigon",18,"Bashota","34567","Podujev",'M',"Pitagoras");
         //srepo.createStudent(newStudent); D.SH update
         while (true) {
             System.out.println("Pres 1 if u want to see the list of the students. ");
             System.out.println("Pres 2 if u want to update a Student. ª");
+            System.out.println("Pres 4 if u wana see a Student.");
             System.out.println("Pres 3 if u want to delete a Student.");
             System.out.println("Pres x if u want to exit.");
             String input = scanner.nextLine();
@@ -47,7 +51,7 @@ public class Main {
 
                 System.out.println("Wich student should i update please tell me his id");
                 String id = scanner.nextLine();
-                Student studenti = srepo.ktheStudentin(Long.valueOf(id));
+                Student studenti = srepo.ktheStudentin(Long.valueOf(id),false);
                 if (studenti == null) {
                     System.out.println("Student was not found");
 
@@ -119,7 +123,7 @@ public class Main {
             } else if (input.equals("3")) {
                 System.out.println("Wich id should i delete");
                 String id = scanner.nextLine();
-                Student studenti = srepo.ktheStudentin(Long.valueOf(id));
+                Student studenti = srepo.ktheStudentin(Long.valueOf(id),false);
                 if (studenti == null) {
                     System.out.println("Id was not found");
                 } else {
@@ -127,7 +131,30 @@ public class Main {
                 }
 
 
+            } else if (input.equals("4")) {
+                System.out.println("Wich student du u wana see tell me his id?");
+                String id = scanner.nextLine();
+                Student studenti = srepo.ktheStudentin(Long.valueOf(id),true);
+                //System.out.println(studenti);
+                System.out.println("If want to see the payment of the student write y otherwise pres enter");
+                String answr = scanner.nextLine();
+                if (answr.equals("y")) {
+                    List<Pagesa> pagesat = prepo.kthejPagesatEStudentit(studenti.getId());
+                    //System.out.println("Pagesat :");
+                  //  pagesat.stream().forEach((Pagesa p) -> {
+                       // System.out.println(p);
+
+                //    });
+                    studenti.setPagesa(pagesat);
+
+
+                }
+                System.out.println(studenti);
+
             }
+
+
+
         }
 
 

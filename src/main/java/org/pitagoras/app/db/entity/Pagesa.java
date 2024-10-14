@@ -13,6 +13,14 @@ public class Pagesa {
     private Timestamp paguarMe;
 
 
+    public Pagesa(Long id, Long studentId, Date dataEFillimit, Date dataEMbarimit, Boolean eshtePaguar, Timestamp paguarMe) {
+        this.id = id;
+        this.studentId = studentId;
+        this.dataEFillimit = dataEFillimit;
+        this.dataEMbarimit = dataEMbarimit;
+        this.eshtePaguar = eshtePaguar;
+        this.paguarMe = paguarMe;
+    }
 
     public Long getId() {
         return id;
@@ -73,9 +81,8 @@ public class Pagesa {
                 ", dataEFillimit='" + dataEFillimit + '\'' +
                 ", dataEMbarimit='" + dataEMbarimit + '\'' +
                 ", eshtePaguar=" + eshtePaguar +
-                ", paguarMe='" + paguarMe + '\'' +
-                ", pagesat=" +
-                '}';
+                ", paguarMe='" + paguarMe + '\''
+                ;
     }
 
 }
