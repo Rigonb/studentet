@@ -1,6 +1,8 @@
 package org.pitagoras.app.db.entity;
 
 
+import java.util.List;
+
 public class Student {
     private long id;
     private String name;
@@ -10,9 +12,32 @@ public class Student {
     private String birthplace;
     private Character  gender;
     private String courseName;
+    private List<Pagesa> pagesa;
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", lastname='" + lastname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birthplace='" + birthplace + '\'' +
+                ", gender=" + gender +
+                ", courseName='" + courseName + '\'' +
+                ", pagesa=" + pagesa +
+                '}';
+    }
 
-public Student(long id,String name,int age){
+    public List<Pagesa> getPagesa() {
+        return pagesa;
+    }
+
+    public void setPagesa(List<Pagesa> pagesa) {
+        this.pagesa = pagesa;
+    }
+
+    public Student(long id, String name, int age){
     this.id=id;
     this.name = name;
     this.age = age;
@@ -119,17 +144,4 @@ public Student(long id,String name,int age){
     }
 
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", lastname='" + lastname + '\'' +
-                ", phone='" + phone + '\'' +
-                ", birthplace='" + birthplace + '\'' +
-                ", gender=" + gender +
-                ", course_name='" + courseName + '\'' +
-                '}';
-    }
 }

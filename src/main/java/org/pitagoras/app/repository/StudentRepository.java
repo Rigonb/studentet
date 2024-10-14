@@ -1,6 +1,7 @@
 package org.pitagoras.app.repository;
 
 import org.pitagoras.app.db.DBConnection;
+import org.pitagoras.app.db.entity.Pagesa;
 import org.pitagoras.app.db.entity.Student;
 
 import java.sql.*;
@@ -45,33 +46,77 @@ public class StudentRepository {
         }
 
     }
+    public Student ktheStudentin(long id, boolean includePayments) {
+        String query = "SELECT s.id AS studentId, s.name AS name, s.age AS age, " +
+                "s.last_name AS last_name, s.phone AS phone, " +
+                "s.birthplace AS birthplace, s.gender AS gender, " +
+                "s.course_name AS course_name ";
 
-    public Student ktheStudentin(long id) {
-        String querry = "Select * from studentet where id = ?";
+        if (includePayments) {
+            query += ", p.id AS paymentId, p.studentId AS paymentStudentId, " +
+                    "p.dataEFillimit AS paymentStartDate, p.dataEMbarimit AS paymentEndDate, " +
+                    "p.eshtePaguar AS isPaid, p.paguarMe AS paidOn " +
+                    "FROM studentet s " +
+                    "LEFT JOIN pagesat p ON s.id = p.studentId ";
+        } else {
+            query += "FROM studentet s ";
+        }
 
-        try (Connection lidhja = this.dbConnection.getConnation();
-             PreparedStatement urdher = lidhja.prepareStatement(querry)
-        ) {
+        query += "WHERE s.id = ?";
 
-            urdher.setLong(1, id);
-            ResultSet respons = urdher.executeQuery();
-            if (respons.next()) {
-                String genderRespStr = respons.getString("gender");
-                Character genderResponse = null;
-                if(genderRespStr != null) {
-                    genderResponse = genderRespStr.charAt(0);
+        try (Connection connection = this.dbConnection.getConnation();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setLong(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String genderRespStr = resultSet.getString("gender");
+                Character genderResponse = (genderRespStr != null) ? genderRespStr.charAt(0) : null;
+
+                Student student = new Student(
+                        resultSet.getLong("studentId"),
+                        resultSet.getString("name"),
+                        resultSet.getInt("age"),
+                        resultSet.getString("last_name"),
+                        resultSet.getString("phone"),
+                        resultSet.getString("birthplace"),
+                        genderResponse,
+                        resultSet.getString("course_name")
+                );
+
+                if (includePayments) {
+                    List<Pagesa> payments = new ArrayList<>();
+                    do {
+                        Long paymentId = resultSet.getLong("paymentId");
+                        if (paymentId != 0) { // Assuming that 0 indicates no payment record
+                            Pagesa payment = new Pagesa(
+                                    paymentId,
+                                    resultSet.getLong("paymentStudentId"),
+                                    resultSet.getDate("paymentStartDate"),
+                                    resultSet.getDate("paymentEndDate"),
+                                    resultSet.getBoolean("isPaid"),
+                                    resultSet.getTimestamp("paidOn")
+                            );
+                            payments.add(payment);
+                        }
+                    } while (resultSet.next());
+
+                    student.setPagesa(payments);
                 }
-//                Character genderResponse = respons.getString("gender");
-                return new Student(respons.getLong("id"), respons.getString("name"), respons.getInt("age"),respons.getString("last_name"),respons.getString("phone"),respons.getString("birthplace"), genderResponse,respons.getString("course_name"));
+
+                return student;
             }
 
         } catch (SQLException e) {
             System.out.println("Nuk mujta me shtu studentin");
             e.printStackTrace();
-
         }
-        return null;
+
+        return null; // Return null if no student is found or an error occurs
     }
+
+
 
     public List<Student> kthejTeGjitheStudentet() {
         String query = "SELECT * FROM studentet";
