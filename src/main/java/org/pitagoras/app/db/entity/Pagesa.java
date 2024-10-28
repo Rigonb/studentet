@@ -3,7 +3,6 @@ package org.pitagoras.app.db.entity;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-
 public class Pagesa {
     private Long id;
     private Long studentId;
@@ -11,7 +10,6 @@ public class Pagesa {
     private Date dataEMbarimit;
     private Boolean eshtePaguar;
     private Timestamp paguarMe;
-
 
     public Pagesa(Long id, Long studentId, Date dataEFillimit, Date dataEMbarimit, Boolean eshtePaguar, Timestamp paguarMe) {
         this.id = id;
@@ -42,17 +40,15 @@ public class Pagesa {
         return dataEFillimit;
     }
 
-    public void setDataEFillimit(String dataEFillimit) {
-        this.dataEFillimit = Date.valueOf(dataEFillimit);
-
+    public void setDataEFillimit(Date dataEFillimit) {
+        this.dataEFillimit = dataEFillimit;
     }
-
 
     public Date getDataEMbarimit() {
         return dataEMbarimit;
     }
 
-    public void DatesetDataEMbarimit(Date dataEMbarimit) {
+    public void setDataEMbarimit(Date dataEMbarimit) {
         this.dataEMbarimit = dataEMbarimit;
     }
 
@@ -72,8 +68,7 @@ public class Pagesa {
         this.paguarMe = paguarMe;
     }
 
-
-
+    @Override
     public String toString() {
         return "Pagesa{" +
                 "id=" + id +
@@ -81,8 +76,7 @@ public class Pagesa {
                 ", dataEFillimit='" + dataEFillimit + '\'' +
                 ", dataEMbarimit='" + dataEMbarimit + '\'' +
                 ", eshtePaguar=" + eshtePaguar +
-                ", paguarMe='" + paguarMe + '\''
-                ;
+                ", paguarMe='" + paguarMe + '\'' +
+                '}';
     }
-
 }

@@ -1,74 +1,44 @@
 package org.pitagoras.app.db.entity;
 
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Student {
-    private long id;
+    private Long id;
     private String name;
     private int age;
-    private String lastname;
+    private String lastName;
     private String phone;
     private String birthplace;
-    private Character  gender;
+    private Character gender;
     private String courseName;
-    private List<Pagesa> pagesa;
+    private List<Pagesa> pagesat;
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", lastname='" + lastname + '\'' +
-                ", phone='" + phone + '\'' +
-                ", birthplace='" + birthplace + '\'' +
-                ", gender=" + gender +
-                ", courseName='" + courseName + '\'' +
-                ", pagesa=" + pagesa +
-                '}';
-    }
-
-    public List<Pagesa> getPagesa() {
-        return pagesa;
-    }
-
-    public void setPagesa(List<Pagesa> pagesa) {
-        this.pagesa = pagesa;
-    }
-
-    public Student(long id, String name, int age){
-    this.id=id;
-    this.name = name;
-    this.age = age;
-
-
-    }
-    public Student(String name,int age){
-
-        this.name = name;
-        this.age = age;
-
-
-    }
-
-    public Student(long id, String name, int age, String lastname, String phone, String birthplace, Character gender, String courseName) {
+    public Student(Long id, String name, int age, String lastName, String phone, String birthplace, Character gender, String courseName) {
         this.id = id;
         this.name = name;
         this.age = age;
-        this.lastname = lastname;
+        this.lastName = lastName;
         this.phone = phone;
         this.birthplace = birthplace;
         this.gender = gender;
         this.courseName = courseName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public List<Pagesa> getPagesat() {
+        return pagesat;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setPagesat(List<Pagesa> pagesat) {
+        this.pagesat = pagesat;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPhone() {
@@ -99,49 +69,73 @@ public class Student {
         return courseName;
     }
 
-    public void setCourse_name(String course_name) {
-        this.courseName = course_name;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
-    public Student(){
-
-        this.id = 0;
-        this.age = 0;
-        this.name = "";
-
-
-    }
-
-
-
-
-
-    public long getId(){
-        return this.id;
-    }
-
-
-    public String getName(){
-        return this.name;
-    }
-
-
-    public int getAge(){
-        return this.age;
-    }
-
-
-    public void setId(long id){
+    public Student(Long id, String name, int age) {
         this.id = id;
-    }
-
-
-    public void setName(String name){
-        this.name=name;
-    }
-    public void setAge(int age){
+        this.name = name;
         this.age = age;
     }
 
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 
+    public Student() {
+
+        this.id = 0L;
+        this.age = 0;
+        this.name = "";
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        String pagesatStr = "";
+        if(this.pagesat != null) {
+            pagesatStr = this.pagesat.stream()
+                    .map(pagesa -> pagesa.getDataEFillimit() + " - " + pagesa.getDataEMbarimit() + " - " + pagesa.getEshtePaguar() + " - " + pagesa.getPaguarMe())
+                    .collect(Collectors.joining("\n"));
+        }
+
+
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + " \'" +
+                ", age=" + age +
+                ", lastName='" + lastName + "\'\n" +
+                ", phone='" + phone + '\'' +
+                ", birthplace='" + birthplace + '\'' +
+                ", gender=" + gender +
+                ", courseName='" + courseName + "\' \n" +
+                ", pagesat=" + pagesat +
+                '}';
+    }
 }
