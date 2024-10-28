@@ -25,6 +25,24 @@ public class Student {
         this.courseName = courseName;
     }
 
+    public Student(Long id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public Student() {
+
+        this.id = 0L;
+        this.age = 0;
+        this.name = "";
+    }
+
     public List<Pagesa> getPagesat() {
         return pagesat;
     }
@@ -73,43 +91,24 @@ public class Student {
         this.courseName = courseName;
     }
 
-    public Student(Long id, String name, int age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
-
-    public Student(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    public Student() {
-
-        this.id = 0L;
-        this.age = 0;
-        this.name = "";
-    }
-
-
     public Long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getAge() {
-        return age;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
     }
 
     public void setAge(int age) {
@@ -119,23 +118,9 @@ public class Student {
     @Override
     public String toString() {
         String pagesatStr = "";
-        if(this.pagesat != null) {
-            pagesatStr = this.pagesat.stream()
-                    .map(pagesa -> pagesa.getDataEFillimit() + " - " + pagesa.getDataEMbarimit() + " - " + pagesa.getEshtePaguar() + " - " + pagesa.getPaguarMe())
-                    .collect(Collectors.joining("\n"));
+        if (this.pagesat != null) {
+            pagesatStr = this.pagesat.stream().map(pagesa -> pagesa.getDataEFillimit() + " - " + pagesa.getDataEMbarimit() + " - " + pagesa.getEshtePaguar() + " - " + pagesa.getPaguarMe()).collect(Collectors.joining("\n"));
         }
-
-
-        return "Student{" +
-                "id=" + id +
-                ", name='" + name + " \'" +
-                ", age=" + age +
-                ", lastName='" + lastName + "\'\n" +
-                ", phone='" + phone + '\'' +
-                ", birthplace='" + birthplace + '\'' +
-                ", gender=" + gender +
-                ", courseName='" + courseName + "\' \n" +
-                ", pagesat=" + pagesat +
-                '}';
+        return "Student{" + "id=" + id + ", name='" + name + " '" + ", age=" + age + ", lastName='" + lastName + "'\n" + ", phone='" + phone + '\'' + ", birthplace='" + birthplace + '\'' + ", gender=" + gender + ", courseName='" + courseName + "' \n" + ", pagesat=" + pagesatStr + '}';
     }
 }

@@ -70,13 +70,6 @@ public class Pagesa {
 
     @Override
     public String toString() {
-        return "Pagesa{" +
-                "id=" + id +
-                ", studentId=" + studentId +
-                ", dataEFillimit='" + dataEFillimit + '\'' +
-                ", dataEMbarimit='" + dataEMbarimit + '\'' +
-                ", eshtePaguar=" + eshtePaguar +
-                ", paguarMe='" + paguarMe + '\'' +
-                '}';
+        return "Pagesa{" + "id=" + id + ", studentId=" + studentId + ", dataEFillimit='" + dataEFillimit + '\'' + ", dataEMbarimit='" + dataEMbarimit + '\'' + ", eshtePaguar=" + eshtePaguar + ", paguarMe='" + paguarMe + '\'' + '}';
     }
 }

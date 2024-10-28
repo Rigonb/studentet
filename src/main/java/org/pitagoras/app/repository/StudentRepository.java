@@ -4,13 +4,15 @@ import org.pitagoras.app.db.DBConnection;
 import org.pitagoras.app.db.entity.Pagesa;
 import org.pitagoras.app.db.entity.Student;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRepository {
-    private DBConnection dbConnection;
-
+    private final DBConnection dbConnection;
 
     public StudentRepository(DBConnection connection) {
         this.dbConnection = connection;
@@ -45,7 +47,6 @@ public class StudentRepository {
         } else {
             query += "from studentet s ";
         }
-
         query += "where s.id = ? ";
 
         try (Connection lidhja = this.dbConnection.getConnection(); PreparedStatement urdheri = lidhja.prepareStatement(query)) {
@@ -89,45 +90,11 @@ public class StudentRepository {
         return null;
     }
 
-    //    public Student findStudentById(Long id,boolean includePayments){
-//        String query = "select s.id as studentId, s.name as name, s.age as age, s.last_name as lastName, s.phone as phone, s.birthplace as birthplace, s.gender as gender, s.course_name as courseName from studentet s ";
-//        if(includePayments){
-//            query += "left join pagesat p on s.id = p.studentId  ";
-//        }
-//        query += "where s.id = ?";
-//
-//
-//
-//        try(Connection lidhja = this.dbConnection.getConnection();
-//            PreparedStatement urdheri = lidhja.prepareStatement(query)
-//
-//        ){
-//            urdheri.setLong(1,id);
-//            ResultSet response = urdheri.executeQuery();
-//            if(response.next()){
-//                String genderRespStr = response.getString("gender");
-//                Character genderResponse = null;
-//                if(genderRespStr != null) {
-//                    genderResponse = genderRespStr.charAt(0);
-//                }
-//
-//                //                return new Student(response.getLong("id"),response.getString("name"),response.getInt("age"));
-//                return new Student(response.getLong("id"), response.getString("name"), response.getInt("age"),response.getString("last_name"),response.getString("phone"),response.getString("birthplace"), genderResponse,response.getString("course_name"));
-//
-//            }
-//        }catch (SQLException e){
-//            System.out.println("Nuk mujta me shtu studentin");
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
     public List<Student> kthejTeGjitheStudentet() {
         String query = "SELECT * FROM studentet";
         List<Student> studentList = new ArrayList<>();
 
-
         try (Connection lidhja = this.dbConnection.getConnection(); PreparedStatement urdher = lidhja.prepareStatement(query); ResultSet respons = urdher.executeQuery()) {
-
 
             while (respons.next()) {
                 String genderStr = respons.getString("gender");
@@ -150,24 +117,10 @@ public class StudentRepository {
     public void updateStudent(Long id, Student student) {
         String query = "Update Studentet set name = ? , age = ?,last_name = ?,phone = ?,birthplace = ?,gender = ?,course_name = ? where id = ?";
 
-
         try (Connection lidhja = this.dbConnection.getConnection(); PreparedStatement urdheri = lidhja.prepareStatement(query)
 
         ) {
-//            Character gender = student.getGender();
             String genderStr = student.getGender() + "";
-//            System.out.println(student + " :" + student.getGender());
-////           if(!genderStr.isEmpty()){
-////                gender = genderStr.charAt(0);
-////            }
-//            System.out.println(gender + ":" + student.getGender());
-//            if(gender == ' ') {
-//                genderStr = null;
-//            } else {
-//                genderStr = genderStr.charAt(0) + "";
-//            }
-
-
             urdheri.setString(1, student.getName());
             urdheri.setInt(2, student.getAge());
             urdheri.setString(3, student.getLastName());
@@ -176,8 +129,6 @@ public class StudentRepository {
             urdheri.setString(6, genderStr.charAt(0) + "");
             urdheri.setString(7, student.getCourseName());
             urdheri.setLong(8, id);
-
-
             urdheri.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Nuk mujta me ndryshu studentin");
@@ -187,11 +138,7 @@ public class StudentRepository {
 
     public void deleteStudent(Long id) {
         String query = "Delete from Studentet where id = ?";
-
-
-        try (Connection lidhja = this.dbConnection.getConnection(); PreparedStatement urdheri = lidhja.prepareStatement(query)
-
-        ) {
+        try (Connection lidhja = this.dbConnection.getConnection(); PreparedStatement urdheri = lidhja.prepareStatement(query)) {
 
             urdheri.setLong(1, id);
             urdheri.executeUpdate();
@@ -204,11 +151,8 @@ public class StudentRepository {
     public Student findLastStudent() {
         String query = "select s.id as studentId, s.name as name, s.age as age, s.last_name as lastName, s.phone as phone, s.birthplace as birthplace, s.gender as gender, s.course_name as courseName from studentet s order by id desc limit 1";
 
-
         try (Connection lidhja = this.dbConnection.getConnection(); PreparedStatement urdheri = lidhja.prepareStatement(query)) {
-
             ResultSet response = urdheri.executeQuery();
-
             Student student = null;
 
             if (response.next()) {
@@ -219,11 +163,9 @@ public class StudentRepository {
                 }
 
                 student = new Student(response.getLong("studentId"), response.getString("name"), response.getInt("age"), response.getString("lastName"), response.getString("phone"), response.getString("birthplace"), genderResponse, response.getString("courseName"));
-
             }
 
             return student;
-
 
         } catch (SQLException e) {
             System.out.println("Nuk mujta me gjet studentin.");
@@ -231,6 +173,5 @@ public class StudentRepository {
         }
         return null;
     }
-
 }
 
