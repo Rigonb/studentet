@@ -1,7 +1,7 @@
 package org.pitagoras.app.db;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 public class DBConnection {
     private Connection connation ;
     public DBConnection(){
@@ -26,7 +26,7 @@ public class DBConnection {
     }
 
 
-    public Connection getConnation(){
+    public Connection getConnection(){
         return this.connect();
     }
     }
