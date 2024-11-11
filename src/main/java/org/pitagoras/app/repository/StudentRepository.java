@@ -33,7 +33,7 @@ public class StudentRepository {
             urdheri.setString(7, student.getCourseName());
             urdheri.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Nuk mujta me shtu studentin");
+            System.out.println("Nuk mujta me shtu studentinnnnn");
             e.printStackTrace();
         }
     }
